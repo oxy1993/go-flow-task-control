@@ -2,7 +2,7 @@ package gftc
 
 import "time"
 
-type Response interface {
+type IResponse interface {
 	GetResponseMap() map[string]interface{}
 	SetResponseMap(mapResponse map[string]interface{})
 	Stopped() bool
@@ -13,7 +13,7 @@ type Response interface {
 	SetResult(result int32)
 }
 
-type response struct {
+type Response struct {
 	time        time.Time
 	stopped     bool
 	failed      bool
@@ -22,37 +22,37 @@ type response struct {
 }
 
 func NewResponse() Response {
-	return &response{time: time.Now()}
+	return Response{time: time.Now()}
 }
 
-func (res *response) Stopped() bool {
+func (res *Response) Stopped() bool {
 	return res.stopped
 }
 
-func (res *response) SetStopped(stopped bool) {
+func (res *Response) SetStopped(stopped bool) {
 	res.stopped = stopped
 }
 
-func (res *response) Failed() bool {
+func (res *Response) Failed() bool {
 	return res.failed
 }
 
-func (res *response) SetFailed(failed bool) {
+func (res *Response) SetFailed(failed bool) {
 	res.failed = failed
 }
 
-func (res *response) Result() int32 {
+func (res *Response) Result() int32 {
 	return res.result
 }
 
-func (res *response) SetResult(result int32) {
+func (res *Response) SetResult(result int32) {
 	res.result = result
 }
 
-func (res *response) GetResponseMap() map[string]interface{} {
+func (res *Response) GetResponseMap() map[string]interface{} {
 	return res.responseMap
 }
 
-func (res *response) SetResponseMap(responseMap map[string]interface{}) {
+func (res *Response) SetResponseMap(responseMap map[string]interface{}) {
 	res.responseMap = responseMap
 }

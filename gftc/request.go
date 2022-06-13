@@ -1,6 +1,6 @@
 package gftc
 
-type Request interface {
+type IRequest interface {
 	IsStopped() bool
 	IsFailed() bool
 	Fail()
@@ -8,30 +8,30 @@ type Request interface {
 }
 
 func NewRequest() Request {
-	return &request{
+	return Request{
 		response:   NewResponse(),
 		requestMap: map[string]interface{}{},
 	}
 }
 
-type request struct {
+type Request struct {
 	response   Response
 	requestMap map[string]interface{}
 }
 
-func (req *request) IsFailed() bool {
+func (req *Request) IsFailed() bool {
 	return req.response.Failed()
 }
 
-func (req *request) Fail() {
+func (req *Request) Fail() {
 	req.response.SetStopped(true)
 	req.response.SetFailed(true)
 }
 
-func (req *request) Stop() {
+func (req *Request) Stop() {
 	req.response.SetStopped(true)
 }
 
-func (req *request) IsStopped() bool {
+func (req *Request) IsStopped() bool {
 	return req.response.Stopped()
 }
