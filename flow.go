@@ -15,6 +15,14 @@ type flow struct {
 	asyncRun  []int
 }
 
+func NewFlow() Flow {
+	return &flow{
+		tasks:     []Task{},
+		alwaysRun: []int{},
+		asyncRun:  []int{},
+	}
+}
+
 func (f *flow) Run(t request, r response) {
 	t.response = &r
 	f.runATask(t, r, 0)
