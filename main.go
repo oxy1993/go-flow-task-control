@@ -1,8 +1,8 @@
 package main
 
 import (
+	"go-flow-task-control/gftc"
 	"log"
-	"oxy/example/gftc"
 )
 
 func main() {
@@ -17,7 +17,7 @@ func main() {
 	goodbyeTask.Task = task2
 
 	newFlow.AddTask(helloTask, false, false)
-	newFlow.AddTask(goodbyeTask, false, false)
+	newFlow.AddTask(goodbyeTask, false, true)
 
 	request := gftc.NewRequest()
 	response := gftc.NewResponse()

@@ -39,6 +39,7 @@ func (f *flow) runATask(T Request, R Response, index int) {
 			log.Printf("Run async task %s at index %d", f.tasks[index], index)
 			f.tasks[index].RunAsync(T, R)
 		} else {
+			log.Printf("Run sync task %s at index %d", f.tasks[index], index)
 			f.tasks[index].Run(T, R)
 		}
 	}
