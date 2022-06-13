@@ -7,6 +7,7 @@ import (
 
 type Flow interface {
 	Run(T request, R response)
+	AddTask(task Task, isAlwaysRun bool, isRunAsync bool)
 }
 
 type flow struct {
