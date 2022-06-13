@@ -1,4 +1,4 @@
-package go_flow_task_control
+package gftc
 
 import (
 	"golang.org/x/exp/slices"

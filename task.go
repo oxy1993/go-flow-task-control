@@ -1,4 +1,4 @@
-package go_flow_task_control
+package gftc
 
 type Task interface {
 	Run(T request, R response)
