@@ -25,7 +25,7 @@ func NewFlow() Flow {
 }
 
 func (f *flow) Run(t Request, r Response) {
-	t.response = r
+	t.Response = r
 	f.runATask(t, r, 0)
 }
 

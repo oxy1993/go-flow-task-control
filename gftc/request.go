@@ -9,29 +9,29 @@ type IRequest interface {
 
 func NewRequest() Request {
 	return Request{
-		response:   NewResponse(),
-		requestMap: map[string]interface{}{},
+		Response:   NewResponse(),
+		RequestMap: map[string]interface{}{},
 	}
 }
 
 type Request struct {
-	response   Response
-	requestMap map[string]interface{}
+	Response   Response
+	RequestMap map[string]interface{}
 }
 
 func (req *Request) IsFailed() bool {
-	return req.response.Failed()
+	return req.Response.Failed()
 }
 
 func (req *Request) Fail() {
-	req.response.SetStopped(true)
-	req.response.SetFailed(true)
+	req.Response.SetStopped(true)
+	req.Response.SetFailed(true)
 }
 
 func (req *Request) Stop() {
-	req.response.SetStopped(true)
+	req.Response.SetStopped(true)
 }
 
 func (req *Request) IsStopped() bool {
-	return req.response.Stopped()
+	return req.Response.Stopped()
 }

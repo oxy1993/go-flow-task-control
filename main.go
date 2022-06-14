@@ -30,6 +30,7 @@ type HelloTask struct {
 }
 
 func HelloTaskExecute(t gftc.Request, r gftc.Response) {
+	t.RequestMap["oxy"] = 1993
 	log.Println("HelloTask ===> Execute")
 }
 
@@ -39,4 +40,5 @@ type GoodbyeTask struct {
 
 func GoodbyeTaskExecute(t gftc.Request, r gftc.Response) {
 	log.Println("GoodbyeTask ===> Execute")
+	log.Println("oxy value added in HelloTask =>", t.RequestMap["oxy"])
 }
