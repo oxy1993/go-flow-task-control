@@ -9,3 +9,5 @@ Flow is a Functional Interface with only a run method. After adding a task into 
 When adding a Task to the Flow, we can specify whether the Task should always be run or not and whether to run async. We can also run a task inside a task, specifically in the Usage section. Now, let’s move on to The Installation.
 
 $ go get github.com/oxy1993/go-flow-task-control
+
+And see an example in main.go
