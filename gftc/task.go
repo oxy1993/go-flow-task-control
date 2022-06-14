@@ -2,7 +2,7 @@ package gftc
 
 type Task interface {
 	Run(T Request, R Response)
-	RunAsync(T Request, R Response)
+	RunAsync(T Request, R Response, C chan bool)
 }
 
 type task struct {
@@ -19,8 +19,8 @@ func (t *task) Run(T Request, R Response) {
 	t.exec(T, R)
 }
 
-func (t *task) RunAsync(T Request, R Response) {
-	go func() {
-		t.exec(T, R)
-	}()
+func (t *task) RunAsync(T Request, R Response, C chan bool) {
+	t.exec(T, R)
+	C <- true
+	close(C)
 }

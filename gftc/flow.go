@@ -37,7 +37,9 @@ func (f *flow) runATask(T Request, R Response, index int) {
 	if !T.IsStopped() || slices.Contains(f.alwaysRun, index) {
 		if slices.Contains(f.asyncRun, index) {
 			log.Printf("Run async task %s at index %d", f.tasks[index], index)
-			f.tasks[index].RunAsync(T, R)
+			ch := make(chan bool)
+			go f.tasks[index].RunAsync(T, R, ch)
+			<-ch
 		} else {
 			log.Printf("Run sync task %s at index %d", f.tasks[index], index)
 			f.tasks[index].Run(T, R)
